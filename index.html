@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business English Valley — 3 Modi</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; image-rendering: pixelated; }
+
+  :root {
+    --wood-light: #c88a4a;
+    --wood-mid: #8b5a2b;
+    --wood-dark: #5c3a1a;
+    --wood-deep: #3d2610;
+    --cream: #f4e4bc;
+    --parchment: #ead9a6;
+    --gold: #ffd93d;
+    --gold-dark: #c49a1e;
+    --red: #c94d4d;
+    --red-dark: #8b2d2d;
+    --green: #5ab832;
+    --green-dark: #3d8f20;
+    --sky: #5fa8d3;
+    --sky-dark: #3a7ab0;
+    --purple: #9b6bc9;
+    --orange: #eb8c00;
+  }
+
+  html, body {
+    height: 100%;
+    font-family: 'VT323', monospace;
+    background: #1a2b1a;
+    color: var(--wood-deep);
+    overflow-x: hidden;
+  }
+
+  body {
+    background: radial-gradient(ellipse at top, #5fa8d3 0%, #3a7ab0 60%, #1a4870 100%);
+    min-height: 100vh;
+    padding: 16px 12px;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(3px 3px at 20% 15%, white, transparent),
+      radial-gradient(2px 2px at 60% 25%, rgba(255,255,255,0.8), transparent),
+      radial-gradient(4px 4px at 85% 10%, white, transparent),
+      radial-gradient(2px 2px at 10% 35%, rgba(255,255,255,0.6), transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* === TITLE === */
+  .title-board {
+    background: linear-gradient(180deg, var(--wood-light) 0%, var(--wood-mid) 50%, var(--wood-dark) 100%);
+    border: 4px solid var(--wood-deep);
+    padding: 16px 14px;
+    text-align: center;
+    margin-bottom: 14px;
+    position: relative;
+    box-shadow:
+      inset 0 0 0 2px rgba(0,0,0,0.2),
+      inset 4px 4px 0 rgba(255,255,255,0.15),
+      6px 6px 0 rgba(0,0,0,0.4);
+  }
+
+  .title-board::after {
+    content: '';
+    position: absolute;
+    inset: 8px;
+    background-image: repeating-linear-gradient(180deg,
+        transparent 0px, transparent 8px,
+        rgba(0,0,0,0.08) 8px, rgba(0,0,0,0.08) 9px);
+    pointer-events: none;
+  }
+
+  .title-board h1 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: var(--gold);
+    text-shadow:
+      3px 3px 0 var(--wood-deep),
+      -1px -1px 0 var(--wood-deep),
+      1px -1px 0 var(--wood-deep),
+      -1px 1px 0 var(--wood-deep);
+    letter-spacing: 1px;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+  }
+
+  .title-board p {
+    font-family: 'VT323', monospace;
+    font-size: 17px;
+    color: var(--cream);
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 2px 2px 0 var(--wood-deep);
+  }
+
+  /* === SCREENS === */
+  .screen { display: none; animation: fadeIn 0.3s ease; }
+  .screen.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === MODE SELECTION === */
+  .mode-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .mode-card {
+    background: var(--cream);
+    border: 4px solid var(--wood-dark);
+    padding: 16px;
+    cursor: pointer;
+    transition: transform 0.15s;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.6),
+      inset -2px -2px 0 rgba(0,0,0,0.15),
+      5px 5px 0 rgba(0,0,0,0.4);
+    display: flex;
+    gap: 14px;
+    align-items: center;
+  }
+
+  .mode-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.6),
+      inset -2px -2px 0 rgba(0,0,0,0.15),
+      7px 7px 0 rgba(0,0,0,0.4);
+  }
+
+  .mode-card:active {
+    transform: translate(2px, 2px);
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.6),
+      inset -2px -2px 0 rgba(0,0,0,0.15),
+      3px 3px 0 rgba(0,0,0,0.4);
+  }
+
+  .mode-icon {
+    font-size: 42px;
+    filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.3));
+    flex-shrink: 0;
+  }
+
+  .mode-info { flex: 1; }
+
+  .mode-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--wood-deep);
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .mode-desc {
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    color: var(--wood-mid);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .mode-meta {
+    font-family: 'Silkscreen', monospace;
+    font-size: 8px;
+    color: var(--red-dark);
+    letter-spacing: 1px;
+  }
+
+  .mode-card.quiz { border-color: var(--sky-dark); }
+  .mode-card.typing { border-color: var(--green-dark); }
+  .mode-card.adventure { border-color: var(--red-dark); }
+
+  /* === TOPIC FILTER === */
+  .topic-section {
+    background: var(--wood-dark);
+    border: 3px solid var(--wood-deep);
+    padding: 10px;
+    margin-bottom: 14px;
+    box-shadow:
+      inset 2px 2px 0 rgba(0,0,0,0.3),
+      3px 3px 0 rgba(0,0,0,0.4);
+  }
+
+  .topic-label {
+    font-family: 'Silkscreen', monospace;
+    font-size: 9px;
+    color: var(--gold);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 0 #000;
+  }
+
+  .topic-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .topic-chip {
+    background: var(--wood-mid);
+    color: var(--cream);
+    border: 2px solid var(--wood-deep);
+    padding: 4px 7px;
+    font-family: 'Silkscreen', monospace;
+    font-size: 8px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: transform 0.1s;
+  }
+
+  .topic-chip.active {
+    background: var(--orange);
+    color: white;
+  }
+
+  .topic-chip:hover { transform: translate(-1px, -1px); }
+
+  /* === STATS CARD === */
+  .stats-card {
+    background: var(--parchment);
+    border: 3px solid var(--wood-dark);
+    padding: 10px;
+    margin-bottom: 14px;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.5),
+      3px 3px 0 rgba(0,0,0,0.3);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 4px;
+    border-right: 1px dashed var(--wood-mid);
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-value {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    color: var(--wood-deep);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .stat-label {
+    font-family: 'Silkscreen', monospace;
+    font-size: 8px;
+    color: var(--red-dark);
+    letter-spacing: 1px;
+  }
+
+  /* === GAME SCREEN COMMON === */
+  .game-header {
+    background: var(--wood-dark);
+    border: 3px solid var(--wood-deep);
+    padding: 10px;
+    margin-bottom: 12px;
+    box-shadow:
+      inset 2px 2px 0 rgba(0,0,0,0.3),
+      3px 3px 0 rgba(0,0,0,0.4);
+  }
+
+  .back-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .back-btn {
+    font-family: 'Silkscreen', monospace;
+    background: var(--red);
+    color: white;
+    border: 3px solid var(--red-dark);
+    padding: 6px 10px;
+    font-size: 9px;
+    cursor: pointer;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.3),
+      3px 3px 0 rgba(0,0,0,0.4);
+    letter-spacing: 1px;
+    transition: transform 0.1s;
+  }
+
+  .back-btn:hover { transform: translate(-1px, -1px); }
+  .back-btn:active { transform: translate(2px, 2px); }
+
+  .game-progress-text {
+    font-family: 'Silkscreen', monospace;
+    font-size: 10px;
+    color: var(--cream);
+    text-shadow: 1px 1px 0 #000;
+    letter-spacing: 1px;
+  }
+
+  .progress-bar-outer {
+    height: 12px;
+    background: #000;
+    border: 2px solid #000;
+    overflow: hidden;
+  }
+
+  .progress-bar-inner {
+    height: 100%;
+    background: linear-gradient(180deg, #8fd948, #5ab832 50%, #3d8f20);
+    transition: width 0.4s ease;
+  }
+
+  /* === LIVES (Adventure) === */
+  .lives-bar {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    margin-top: 6px;
+  }
+
+  .life-heart {
+    font-size: 20px;
+    filter: drop-shadow(1px 1px 0 rgba(0,0,0,0.5));
+    transition: transform 0.3s;
+  }
+
+  .life-heart.lost { opacity: 0.2; filter: grayscale(1); }
+  .life-heart.half { opacity: 0.55; }
+
+  @keyframes heartBreak {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5) rotate(-15deg); }
+    100% { transform: scale(1); }
+  }
+
+  .life-heart.breaking { animation: heartBreak 0.5s ease; }
+
+  /* === QUESTION CARD === */
+  .question-wrap {
+    background: var(--parchment);
+    border: 4px solid var(--wood-dark);
+    padding: 16px;
+    margin-bottom: 12px;
+    position: relative;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.5),
+      inset -2px -2px 0 rgba(0,0,0,0.15),
+      4px 4px 0 rgba(0,0,0,0.4);
+  }
+
+  .question-topic {
+    font-family: 'Silkscreen', monospace;
+    font-size: 9px;
+    color: var(--red-dark);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .difficulty-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--wood-deep);
+    font-family: 'Silkscreen', monospace;
+    font-size: 8px;
+    padding: 2px 6px;
+    margin-left: 6px;
+    border: 1px solid var(--wood-deep);
+    letter-spacing: 1px;
+  }
+
+  .difficulty-badge.medium { background: var(--orange); color: white; }
+  .difficulty-badge.hard { background: var(--red); color: white; }
+
+  .question-context {
+    background: rgba(95, 168, 211, 0.2);
+    border-left: 4px solid var(--sky-dark);
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    color: var(--wood-deep);
+    line-height: 1.3;
+    font-style: italic;
+  }
+
+  .question-text {
+    font-family: 'VT323', monospace;
+    font-size: 19px;
+    color: var(--wood-deep);
+    line-height: 1.3;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  .question-text .highlight {
+    background: var(--gold);
+    padding: 0 3px;
+    font-style: italic;
+  }
+
+  /* === MC ANSWERS === */
+  .answer-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .answer-btn {
+    background: linear-gradient(180deg, #9bd4ff 0%, #5fa8d3 50%, #3a7ab0 100%);
+    border: 3px solid #1e4a6e;
+    padding: 11px 12px;
+    font-family: 'VT323', monospace;
+    font-size: 17px;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.4),
+      inset -2px -2px 0 rgba(0,0,0,0.3),
+      4px 4px 0 rgba(0,0,0,0.4);
+    transition: transform 0.1s;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    line-height: 1.3;
+    width: 100%;
+  }
+
+  .answer-btn:hover:not(:disabled) {
+    transform: translate(-2px, -2px);
+  }
+
+  .answer-btn:active:not(:disabled) {
+    transform: translate(2px, 2px);
+  }
+
+  .answer-btn.correct {
+    background: linear-gradient(180deg, #8fd948 0%, #5ab832 50%, #3d8f20 100%);
+    border-color: #1f4e0c;
+    animation: correctPulse 0.5s ease;
+  }
+
+  .answer-btn.wrong {
+    background: linear-gradient(180deg, #ff8fa8 0%, #e04d6b 50%, #a82d48 100%);
+    border-color: #6b1a2e;
+    animation: shake 0.4s ease;
+  }
+
+  .answer-btn:disabled { cursor: default; }
+
+  @keyframes correctPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+
+  /* === TYPING INPUT === */
+  .typing-input-wrap {
+    background: var(--cream);
+    border: 3px solid var(--wood-dark);
+    padding: 12px;
+    margin-bottom: 10px;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.5),
+      3px 3px 0 rgba(0,0,0,0.3);
+  }
+
+  .typing-input {
+    width: 100%;
+    background: white;
+    border: 3px solid var(--wood-dark);
+    padding: 10px;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: var(--wood-deep);
+    outline: none;
+    box-shadow: inset 2px 2px 0 rgba(0,0,0,0.1);
+  }
+
+  .typing-input:focus {
+    border-color: var(--sky-dark);
+    box-shadow:
+      inset 2px 2px 0 rgba(0,0,0,0.1),
+      0 0 0 2px rgba(95, 168, 211, 0.3);
+  }
+
+  .typing-hint {
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+    color: var(--wood-mid);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* === HINT BUTTON === */
+  .hint-section {
+    margin-bottom: 10px;
+  }
+
+  .hint-btn {
+    width: 100%;
+    background: linear-gradient(180deg, #b78bff 0%, #9b6bc9 50%, #6b42a0 100%);
+    border: 3px solid #3d2570;
+    padding: 10px;
+    font-family: 'Silkscreen', monospace;
+    font-size: 10px;
+    color: white;
+    cursor: pointer;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.3),
+      inset -2px -2px 0 rgba(0,0,0,0.3),
+      3px 3px 0 rgba(0,0,0,0.4);
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+    transition: transform 0.1s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .hint-btn:hover:not(:disabled) { transform: translate(-1px, -1px); }
+  .hint-btn:active:not(:disabled) { transform: translate(2px, 2px); }
+
+  .hint-btn:disabled {
+    background: linear-gradient(180deg, #888 0%, #555 100%);
+    border-color: #333;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  .hint-btn .cost-tag {
+    background: var(--gold);
+    color: var(--wood-deep);
+    padding: 2px 5px;
+    font-size: 8px;
+    border: 1px solid var(--wood-deep);
+    text-shadow: none;
+  }
+
+  .hint-reveal {
+    background: linear-gradient(180deg, #fff3cc 0%, #ffe88a 100%);
+    border: 3px solid var(--gold-dark);
+    padding: 12px;
+    margin-top: 8px;
+    font-family: 'VT323', monospace;
+    font-size: 17px;
+    color: var(--wood-deep);
+    line-height: 1.4;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.5),
+      3px 3px 0 rgba(0,0,0,0.3);
+    animation: popIn 0.3s ease;
+  }
+
+  .hint-reveal b {
+    font-family: 'Silkscreen', monospace;
+    font-size: 9px;
+    color: var(--red-dark);
+    display: block;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+
+  .hint-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 4px;
+    align-items: flex-start;
+  }
+
+  .hint-item .icon { font-size: 14px; flex-shrink: 0; }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(180deg, #ffd93d 0%, #e8b820 50%, #c49a1e 100%);
+    border: 3px solid var(--wood-deep);
+    padding: 12px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--wood-deep);
+    cursor: pointer;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.5),
+      inset -2px -2px 0 rgba(0,0,0,0.3),
+      4px 4px 0 rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+    letter-spacing: 1px;
+    transition: transform 0.1s;
+  }
+
+  .submit-btn:hover { transform: translate(-2px, -2px); }
+  .submit-btn:active { transform: translate(2px, 2px); }
+
+  /* === FEEDBACK === */
+  .feedback {
+    border: 4px solid;
+    padding: 14px;
+    margin-top: 10px;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.5),
+      4px 4px 0 rgba(0,0,0,0.4);
+    animation: popIn 0.3s ease;
+  }
+
+  .feedback.correct {
+    background: linear-gradient(180deg, #c9f4a3 0%, #8fd948 100%);
+    border-color: #1f4e0c;
+  }
+
+  .feedback.wrong {
+    background: linear-gradient(180deg, #ffd4dc 0%, #ff8fa8 100%);
+    border-color: #6b1a2e;
+  }
+
+  .feedback.partial {
+    background: linear-gradient(180deg, #fff3cc 0%, #ffd93d 100%);
+    border-color: #8a6a00;
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .feedback-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    color: var(--wood-deep);
+    margin-bottom: 6px;
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
+    text-align: center;
+  }
+
+  .feedback-answer {
+    font-family: 'VT323', monospace;
+    font-size: 17px;
+    color: var(--wood-deep);
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .feedback-explain {
+    font-family: 'VT323', monospace;
+    font-size: 15px;
+    color: var(--wood-deep);
+    line-height: 1.3;
+    background: rgba(255,255,255,0.45);
+    border: 2px solid rgba(0,0,0,0.1);
+    padding: 8px 10px;
+    margin-top: 6px;
+  }
+
+  .feedback-explain b {
+    font-family: 'Silkscreen', monospace;
+    font-size: 8px;
+    color: var(--red-dark);
+    display: block;
+    margin-bottom: 3px;
+    letter-spacing: 1px;
+  }
+
+  .feedback-example {
+    background: rgba(255,217,61,0.3);
+    border-left: 3px solid var(--gold-dark);
+    padding: 6px 10px;
+    margin-top: 8px;
+    font-family: 'VT323', monospace;
+    font-size: 15px;
+    color: var(--wood-deep);
+    line-height: 1.3;
+    font-style: italic;
+  }
+
+  .next-btn {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    background: linear-gradient(180deg, #ffd93d 0%, #e8b820 50%, #c49a1e 100%);
+    border: 3px solid var(--wood-deep);
+    padding: 12px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--wood-deep);
+    cursor: pointer;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.5),
+      inset -2px -2px 0 rgba(0,0,0,0.3),
+      4px 4px 0 rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 0 rgba(255,255,255,0.3);
+    letter-spacing: 1px;
+    transition: transform 0.1s;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  .next-btn:hover { transform: translate(-2px, -2px); animation: none; }
+  .next-btn:active { transform: translate(2px, 2px); }
+
+  /* === RESULTS SCREEN === */
+  .result-screen {
+    text-align: center;
+    padding: 20px 12px;
+  }
+
+  .result-emoji {
+    font-size: 72px;
+    filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.5));
+    animation: emojiPop 0.8s ease;
+    display: inline-block;
+  }
+
+  @keyframes emojiPop {
+    0% { transform: scale(0); }
+    60% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+
+  .result-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: var(--gold);
+    margin: 14px 0 8px;
+    text-shadow: 3px 3px 0 var(--wood-deep);
+    line-height: 1.4;
+  }
+
+  .result-score {
+    font-family: 'VT323', monospace;
+    font-size: 26px;
+    color: var(--cream);
+    margin-bottom: 14px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.6);
+  }
+
+  .result-stats {
+    background: var(--parchment);
+    border: 3px solid var(--wood-dark);
+    padding: 14px;
+    margin: 14px 0;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    color: var(--wood-deep);
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.15);
+  }
+  .result-row:last-child { border-bottom: none; }
+
+  .result-label {
+    font-family: 'Silkscreen', monospace;
+    font-size: 10px;
+    color: var(--red-dark);
+    letter-spacing: 1px;
+  }
+
+  .result-value {
+    font-weight: bold;
+    color: var(--wood-deep);
+  }
+
+  .review-section {
+    background: var(--cream);
+    border: 3px solid var(--wood-dark);
+    padding: 12px;
+    margin: 14px 0;
+    text-align: left;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
+  .review-title {
+    font-family: 'Silkscreen', monospace;
+    font-size: 10px;
+    color: var(--red-dark);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .review-item {
+    background: rgba(255, 200, 200, 0.3);
+    border-left: 3px solid var(--red);
+    padding: 8px;
+    margin-bottom: 8px;
+    font-family: 'VT323', monospace;
+    font-size: 14px;
+    color: var(--wood-deep);
+    line-height: 1.3;
+  }
+
+  .review-item .q { font-weight: bold; margin-bottom: 3px; }
+  .review-item .a { color: var(--green-dark); }
+
+  .button-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  /* === GAME OVER === */
+  .game-over {
+    text-align: center;
+    padding: 30px 16px;
+  }
+
+  .game-over-emoji {
+    font-size: 80px;
+    filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.5));
+    animation: shake 0.6s ease;
+    display: inline-block;
+  }
+
+  .game-over-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 20px;
+    color: var(--red);
+    margin: 16px 0 10px;
+    text-shadow: 3px 3px 0 var(--wood-deep);
+    letter-spacing: 2px;
+  }
+
+  .act-banner {
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    padding: 6px 0;
+    margin: 10px 0;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 11px;
+    color: var(--wood-deep);
+    text-align: center;
+    letter-spacing: 2px;
+    animation: bannerSlide 0.6s ease;
+  }
+
+  @keyframes bannerSlide {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @media (max-width: 380px) {
+    .mode-icon { font-size: 34px; }
+    .mode-title { font-size: 10px; }
+    .answer-btn { font-size: 16px; padding: 10px; }
+  }
+
+  /* === EXIT MODAL === */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .modal-backdrop.active { display: flex; }
+
+  .modal-box {
+    background: var(--cream);
+    border: 4px solid var(--wood-dark);
+    padding: 20px 18px;
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.5),
+      8px 8px 0 rgba(0,0,0,0.5);
+    animation: popIn 0.3s ease;
+  }
+
+  .modal-icon {
+    font-size: 48px;
+    filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.3));
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .modal-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 13px;
+    color: var(--wood-deep);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .modal-text {
+    font-family: 'VT323', monospace;
+    font-size: 17px;
+    color: var(--wood-mid);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .modal-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .modal-btn {
+    border: 3px solid var(--wood-deep);
+    padding: 12px 8px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow:
+      inset 2px 2px 0 rgba(255,255,255,0.4),
+      inset -2px -2px 0 rgba(0,0,0,0.3),
+      3px 3px 0 rgba(0,0,0,0.5);
+    letter-spacing: 1px;
+    transition: transform 0.1s;
+  }
+
+  .modal-btn.confirm {
+    background: linear-gradient(180deg, #ff8fa8 0%, #e04d6b 50%, #a82d48 100%);
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  }
+
+  .modal-btn.cancel {
+    background: linear-gradient(180deg, #9bd4ff 0%, #5fa8d3 50%, #3a7ab0 100%);
+    color: white;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  }
+
+  .modal-btn:hover { transform: translate(-1px, -1px); }
+  .modal-btn:active { transform: translate(2px, 2px); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ============ TITLE ============ -->
+  <div class="title-board">
+    <h1>BUSINESS ENGLISH<br>VALLEY</h1>
+    <p>~ 3 Modi • echtes Corporate English ~</p>
+  </div>
+
+  <!-- ============ HOME SCREEN ============ -->
+  <div class="screen active" id="homeScreen">
+
+    <div class="stats-card">
+      <div class="stat-item">
+        <span class="stat-value" id="homeStreak">0</span>
+        <span class="stat-label">🔥 STREAK</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="homeTotal">0</span>
+        <span class="stat-label">📊 PLAYED</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value" id="homeBest">—</span>
+        <span class="stat-label">🏆 BEST</span>
+      </div>
+    </div>
+
+    <div class="mode-grid">
+      <div class="mode-card quiz" onclick="Game.startMode('quiz')">
+        <div class="mode-icon">🎓</div>
+        <div class="mode-info">
+          <div class="mode-title">QUIZ MODE</div>
+          <div class="mode-desc">Multiple Choice mit Erklärungen zu jeder Antwort</div>
+          <div class="mode-meta">20 FRAGEN • B2 → C1+</div>
+        </div>
+      </div>
+
+      <div class="mode-card typing" onclick="Game.startMode('typing')">
+        <div class="mode-icon">⌨️</div>
+        <div class="mode-info">
+          <div class="mode-title">VOCAB TEST</div>
+          <div class="mode-desc">Deutsch → Englisch tippen, mit Tippfehler-Toleranz</div>
+          <div class="mode-meta">10 VOKABELN • MIT BEISPIELSATZ</div>
+        </div>
+      </div>
+
+      <div class="mode-card adventure" onclick="Game.startMode('adventure')">
+        <div class="mode-icon">⚔️</div>
+        <div class="mode-info">
+          <div class="mode-title">ADVENTURE</div>
+          <div class="mode-desc">5 Leben, gemischte Aufgaben, 3 Akte steigender Härte</div>
+          <div class="mode-meta">15 TASKS • GAME OVER BEI 0 ❤</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="topic-section">
+      <div class="topic-label">📚 10 THEMENGEBIETE</div>
+      <div class="topic-chips">
+        <span class="topic-chip">📅 Meetings</span>
+        <span class="topic-chip">📧 Emails</span>
+        <span class="topic-chip">⏰ Deadlines</span>
+        <span class="topic-chip">🎤 Presentations</span>
+        <span class="topic-chip">🤝 Negotiations</span>
+        <span class="topic-chip">📊 Projects</span>
+        <span class="topic-chip">💰 Finance</span>
+        <span class="topic-chip">💬 Customer</span>
+        <span class="topic-chip">👥 Teamwork</span>
+        <span class="topic-chip">🏢 Office</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ GAME SCREEN ============ -->
+  <div class="screen" id="gameScreen">
+    <div class="game-header">
+      <div class="back-row">
+        <button class="back-btn" onclick="Game.confirmExit()">◀ EXIT</button>
+        <span class="game-progress-text" id="gameProgressText">1 / 10</span>
+      </div>
+      <div class="progress-bar-outer">
+        <div class="progress-bar-inner" id="gameProgressBar" style="width:0%"></div>
+      </div>
+      <div class="lives-bar" id="livesBar" style="display:none;"></div>
+    </div>
+
+    <div id="actBannerContainer"></div>
+
+    <div class="question-wrap">
+      <div class="question-topic">
+        <span id="questionTopic">TOPIC</span>
+        <span class="difficulty-badge" id="difficultyBadge">EASY</span>
+      </div>
+
+      <div class="question-context" id="questionContext" style="display:none;"></div>
+
+      <div class="question-text" id="questionText">Loading...</div>
+    </div>
+
+    <!-- MC answers -->
+    <div class="answer-grid" id="answerGrid" style="display:none;"></div>
+
+    <!-- Typing input -->
+    <div class="typing-input-wrap" id="typingWrap" style="display:none;">
+      <input type="text" class="typing-input" id="typingInput" autocomplete="off"
+             autocorrect="off" autocapitalize="off" spellcheck="false"
+             placeholder="Englische Übersetzung hier eintippen..." />
+      <div class="typing-hint">💡 Groß-/Kleinschreibung egal • kleine Tippfehler erlaubt</div>
+    </div>
+
+    <!-- Hint button (only for typing tasks) -->
+    <div class="hint-section" id="hintSection" style="display:none;">
+      <button class="hint-btn" id="hintBtn" onclick="Game.showHint()">
+        <span>💡 HINWEIS ANZEIGEN</span>
+        <span class="cost-tag">−5 XP</span>
+      </button>
+      <div id="hintReveal"></div>
+    </div>
+
+    <button class="submit-btn" id="submitBtn" onclick="Game.submitTyping()" style="display:none;">▶ SUBMIT</button>
+
+    <!-- Feedback -->
+    <div id="feedbackArea"></div>
+  </div>
+
+  <!-- ============ RESULTS SCREEN ============ -->
+  <div class="screen" id="resultsScreen">
+    <div class="result-screen">
+      <div class="result-emoji" id="resultEmoji">🏆</div>
+      <div class="result-title" id="resultTitle">SESSION<br>COMPLETE!</div>
+      <div class="result-score" id="resultScore">18 / 20</div>
+
+      <div class="result-stats" id="resultStats"></div>
+
+      <div id="reviewWrap" class="review-section" style="display:none;">
+        <div class="review-title">📝 FEHLER ZUM LERNEN</div>
+        <div id="reviewList"></div>
+      </div>
+
+      <div class="button-row">
+        <button class="submit-btn" onclick="Game.retry()">🔄 RETRY</button>
+        <button class="submit-btn" onclick="Game.goHome()" style="background:linear-gradient(180deg,#9bd4ff,#3a7ab0);color:white;">🏠 HOME</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ GAME OVER (Adventure) ============ -->
+  <div class="screen" id="gameoverScreen">
+    <div class="game-over">
+      <div class="game-over-emoji">💀</div>
+      <div class="game-over-title">GAME OVER</div>
+
+      <div class="result-stats" id="gameoverStats"></div>
+
+      <div id="gameoverReview" class="review-section" style="display:none;">
+        <div class="review-title">📝 DAS HÄTTEST DU WISSEN MÜSSEN</div>
+        <div id="gameoverReviewList"></div>
+      </div>
+
+      <div class="button-row">
+        <button class="submit-btn" onclick="Game.retry()">💪 RETRY</button>
+        <button class="submit-btn" onclick="Game.goHome()" style="background:linear-gradient(180deg,#9bd4ff,#3a7ab0);color:white;">🏠 HOME</button>
+      </div>
+    </div>
+  </div>
+  <!-- ============ EXIT CONFIRMATION MODAL ============ -->
+  <div class="modal-backdrop" id="exitModal">
+    <div class="modal-box">
+      <span class="modal-icon">⚠️</span>
+      <div class="modal-title">SESSION<br>BEENDEN?</div>
+      <div class="modal-text">Dein Fortschritt in dieser Session geht verloren.</div>
+      <div class="modal-buttons">
+        <button class="modal-btn cancel" onclick="Game.cancelExit()">◀ BLEIBEN</button>
+        <button class="modal-btn confirm" onclick="Game.doExit()">EXIT ▶</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+/* ============================================================================
+ * CONTENT DATABASE — All learning content isolated from game logic
+ * ============================================================================ */
+
+const CONTENT = {
+
+  /* -----------------------------------------------------------------
+   * VOCAB TEST (Mode 2): 40 Deutsch → Englisch
+   * ----------------------------------------------------------------- */
+  vocab: [
+    { topic: 'meetings',     de: 'die Tagesordnung',                                 en: ['agenda'],                                           example: 'Let\'s move to the next item on the agenda.',                                     note: 'Standard-Wort für Meeting-Ablauf.' },
+    { topic: 'meetings',     de: 'das Protokoll (eines Meetings)',                   en: ['minutes', 'the minutes'],                           example: 'Could you take the minutes of today\'s meeting?',                                 note: 'Immer Plural! „Minutes" = Protokoll.' },
+    { topic: 'meetings',     de: 'eine Besprechung ansetzen',                        en: ['to schedule a meeting', 'schedule a meeting', 'to set up a meeting', 'set up a meeting'], example: 'Can we schedule a meeting for Thursday morning?', note: 'Auch „to set up a meeting" gebräuchlich.' },
+    { topic: 'meetings',     de: 'sich kurz abstimmen / kurz besprechen',            en: ['to touch base', 'touch base'],                      example: 'Let\'s touch base on Friday to review progress.',                                 note: 'Informell — zwischen Kollegen sehr üblich.' },
+
+    { topic: 'emails',       de: 'anbei / im Anhang',                                en: ['please find attached', 'attached', 'please see attached'], example: 'Please find attached the revised proposal.', note: 'Standardformulierung für Email-Anhänge.' },
+    { topic: 'emails',       de: 'zur Kenntnisnahme',                                en: ['for your information', 'fyi'],                      example: 'FYI — the client has rescheduled to next Tuesday.',                               note: 'Abkürzung „FYI" sehr verbreitet.' },
+    { topic: 'emails',       de: 'Ich melde mich bei Ihnen.',                        en: ['i\'ll get back to you', 'i will get back to you'],  example: 'I\'ll get back to you by the end of the day.',                                    note: 'Zentrale Follow-up-Phrase.' },
+    { topic: 'emails',       de: 'unter Bezugnahme auf Ihre Nachricht',              en: ['with reference to your email', 'with reference to your message'], example: 'With reference to your email of June 3rd, please see the updated figures below.', note: 'Formelle Einleitung.' },
+
+    { topic: 'deadlines',    de: 'die Frist / der Abgabetermin',                     en: ['deadline', 'the deadline', 'due date'],             example: 'The deadline for submissions is next Monday.',                                    note: 'Auch „due date" gebräuchlich.' },
+    { topic: 'deadlines',    de: 'eine Frist einhalten',                             en: ['to meet a deadline', 'meet a deadline'],            example: 'We need to meet the deadline to avoid penalty fees.',                             note: 'NICHT „to hold a deadline" (Germanismus!). Richtiges Verb: meet.' },
+    { topic: 'deadlines',    de: 'eine Frist verlängern',                            en: ['to extend a deadline', 'extend a deadline', 'to push back a deadline', 'push back the deadline'], example: 'Can we extend the deadline by one week?', note: 'Auch „push back" informeller.' },
+    { topic: 'deadlines',    de: 'im Zeitplan / termingerecht',                      en: ['on track', 'on schedule'],                          example: 'The project is on track for a Q3 launch.',                                        note: '„On track" = alles läuft nach Plan.' },
+
+    { topic: 'presentations',de: 'die Folie',                                        en: ['slide', 'the slide'],                               example: 'Let\'s move to the next slide.',                                                  note: '„Deck" = komplette Präsentation.' },
+    { topic: 'presentations',de: 'ein zentraler Punkt (aus der Präsentation)',       en: ['key takeaway', 'a key takeaway', 'takeaway'],       example: 'The key takeaway is that customer retention drives 80% of our revenue.',          note: 'Was nach der Präsentation hängen bleibt.' },
+    { topic: 'presentations',de: 'einen Überblick geben',                            en: ['to give an overview', 'give an overview'],          example: 'Let me give you a quick overview of our Q3 results.',                             note: 'Standard-Einstieg.' },
+    { topic: 'presentations',de: 'die Zielgruppe',                                   en: ['target audience', 'audience'],                      example: 'Our target audience is mid-sized enterprises in DACH.',                           note: '„Audience" allein reicht oft.' },
+
+    { topic: 'negotiations', de: 'einen Kompromiss finden',                          en: ['to reach a compromise', 'reach a compromise', 'to find common ground', 'find common ground'], example: 'I\'m confident we can reach a compromise on the pricing.', note: 'Auch „find common ground".' },
+    { topic: 'negotiations', de: 'das endgültige Angebot',                           en: ['final offer', 'the final offer'],                   example: 'This is our final offer — we cannot go lower.',                                   note: 'Klar kommunizierte Grenze.' },
+    { topic: 'negotiations', de: 'entgegenkommen / auf halbem Weg treffen',          en: ['to meet halfway', 'meet halfway', 'meet in the middle', 'to meet in the middle'], example: 'Could we meet halfway at 8% discount?',                  note: 'Wörtlich „auf halbem Weg treffen".' },
+    { topic: 'negotiations', de: 'die Verhandlungsmacht',                            en: ['bargaining power', 'leverage'],                     example: 'With three competing offers, we have significant bargaining power.',              note: '„Leverage" als Synonym.' },
+
+    { topic: 'projects',     de: 'der Meilenstein',                                  en: ['milestone', 'a milestone'],                         example: 'We hit an important milestone yesterday — the MVP is live.',                      note: 'Wichtiger Projekt-Checkpoint.' },
+    { topic: 'projects',     de: 'der Projektumfang',                                en: ['scope', 'project scope'],                           example: 'Any changes to the scope require formal approval.',                               note: '„Scope creep" = unkontrollierte Ausweitung.' },
+    { topic: 'projects',     de: 'das zu liefernde Ergebnis',                        en: ['deliverable', 'a deliverable'],                     example: 'The final report is the main deliverable for Phase 1.',                           note: 'Was am Ende abgegeben wird.' },
+    { topic: 'projects',     de: 'der Interessenvertreter',                          en: ['stakeholder', 'a stakeholder'],                     example: 'Let\'s align with all stakeholders before the next steering committee.',          note: 'Alle mit Interesse am Projekt.' },
+
+    { topic: 'finance',      de: 'der Umsatz',                                       en: ['revenue', 'the revenue'],                           example: 'Annual revenue grew by 12% year-over-year.',                                      note: '„Turnover" ist britisch, aber veraltet.' },
+    { topic: 'finance',      de: 'der Gewinn',                                       en: ['profit', 'the profit'],                             example: 'Net profit margin improved to 18%.',                                              note: '„Net profit" = Netto, „gross profit" = Brutto.' },
+    { topic: 'finance',      de: 'das Budget überschreiten',                         en: ['to go over budget', 'go over budget', 'to exceed the budget', 'exceed the budget'], example: 'Unfortunately, we went over budget by €50k.',                      note: '„To exceed" ist formeller.' },
+    { topic: 'finance',      de: 'die Rentabilität',                                 en: ['profitability'],                                    example: 'We need to focus on profitability, not just growth.',                             note: 'Fähigkeit, Gewinn zu erwirtschaften.' },
+
+    { topic: 'customer',     de: 'sich entschuldigen für',                           en: ['to apologize for', 'apologize for'],                example: 'I sincerely apologize for the delay in our response.',                            note: 'Formell: „Please accept our apologies".' },
+    { topic: 'customer',     de: 'eine Beschwerde bearbeiten',                       en: ['to handle a complaint', 'handle a complaint', 'to address a complaint', 'address a complaint'], example: 'Our team will handle your complaint within 24 hours.',     note: 'Auch „to address a complaint".' },
+    { topic: 'customer',     de: 'die Kundenbindung',                                en: ['customer retention', 'retention'],                  example: 'Customer retention is more profitable than acquisition.',                         note: 'Bestehende Kunden halten.' },
+    { topic: 'customer',     de: 'unseren Service verbessern',                       en: ['to improve our service', 'improve our service'],    example: 'Your feedback helps us improve our service.',                                     note: 'Standardphrase im Customer Success.' },
+
+    { topic: 'teamwork',     de: 'eine Aufgabe übertragen / delegieren',             en: ['to delegate a task', 'delegate a task', 'to delegate'], example: 'A good manager knows how to delegate effectively.',                          note: 'Verantwortung abgeben.' },
+    { topic: 'teamwork',     de: 'Rücksprache halten',                               en: ['to check in with', 'check in with', 'to check in'], example: 'I\'ll check in with the team tomorrow morning.',                                  note: '„I\'ll check in with the team".' },
+    { topic: 'teamwork',     de: 'Unterstützung anbieten',                           en: ['to offer support', 'offer support'],                example: 'Please let me know if you need any support.',                                     note: 'Standardphrase für Kollegenhilfe.' },
+    { topic: 'teamwork',     de: 'jemanden auf dem Laufenden halten',                en: ['to keep someone in the loop', 'keep in the loop', 'to keep in the loop', 'keep someone in the loop'], example: 'Please keep me in the loop on any updates from the client.', note: 'Idiomatisch, sehr gebräuchlich.' },
+
+    { topic: 'office',       de: 'klären / aus dem Weg räumen',                      en: ['to sort out', 'sort out', 'to resolve', 'resolve'], example: 'Let me sort this out with the IT team.',                                          note: 'Auch „to resolve" formeller.' },
+    { topic: 'office',       de: 'auf später verschieben',                           en: ['to postpone', 'postpone', 'to push back', 'push back'], example: 'Can we postpone our 3pm call to Thursday?',                                   note: '„Push back" informeller.' },
+    { topic: 'office',       de: 'die Vorgehensweise abstimmen',                     en: ['to align on the approach', 'align on the approach', 'to agree on the approach', 'agree on the approach'], example: 'Let\'s align on the approach before we brief the client.', note: 'Zentrales Corporate-Verb.' },
+    { topic: 'office',       de: 'nachhaken / nachfassen',                           en: ['to follow up', 'follow up'],                        example: 'I\'ll follow up with you next week on the proposal.',                             note: 'Follow-up ist auch als Nomen: „a follow-up".' }
+  ],
+
+  /* -----------------------------------------------------------------
+   * QUIZ (Mode 1): 20 Multiple-Choice Fragen
+   * ----------------------------------------------------------------- */
+  quiz: [
+    // EASY (B2)
+    { topic: 'meetings', difficulty: 'easy', context: 'A colleague says during a meeting:', q: '"Can we circle back on this tomorrow?" What does she mean?',
+      answers: ['Sit in a circle during the meeting', 'Return to this topic later', 'Cancel the discussion', 'Make a phone call'], correct: 1,
+      explain: '„To circle back" ist eine sehr häufige Business-Phrase: ein Thema später wieder aufgreifen. Beliebt, um Themen zu vertagen, ohne sie zu verwerfen.' },
+
+    { topic: 'emails', difficulty: 'easy', q: 'Which is the most professional email opener when you don\'t know the person?',
+      answers: ['Hey!', 'Dear Mr. Schmidt,', 'Hi guys,', 'Yo!'], correct: 1,
+      explain: '„Dear + Nachname" ist der Standard für formelle Erstkommunikation. „Hi" erst ab dem 2.–3. Austausch oder bei bekannten Kontakten.' },
+
+    { topic: 'deadlines', difficulty: 'easy', context: 'A colleague writes:', q: '"I need this report by EOD." What does EOD mean?',
+      answers: ['Every Other Day', 'Early Office Delivery', 'End of Day', 'Estimated Order Date'], correct: 2,
+      explain: 'EOD = „End of Day" (bis Büroschluss). Wichtige Abkürzung. Verwandt: EOW (End of Week), COB (Close of Business).' },
+
+    { topic: 'presentations', difficulty: 'easy', q: 'Which is the best way to start a presentation?',
+      answers: ['"So, yeah, um, hello…"', '"Good morning everyone. Today I\'ll be walking you through our Q3 results."', '"Hello. I am nervous."', '"Let\'s just start."'], correct: 1,
+      explain: 'Professioneller Opener besteht aus zwei Teilen: Begrüßung + klare Ankündigung des Inhalts. „To walk someone through something" = schrittweise erklären.' },
+
+    { topic: 'office', difficulty: 'easy', context: 'Your manager asks:', q: '"Can you loop me in?" What should you do?',
+      answers: ['Create a diagram', 'Include them in the email or communication', 'Make a circle with colleagues', 'Reboot the system'], correct: 1,
+      explain: '„To loop someone in" = jemanden in eine laufende Kommunikation einbeziehen (CC setzen, in Chat-Thread hinzufügen). Gegenteil: „to take someone out of the loop".' },
+
+    { topic: 'teamwork', difficulty: 'easy', context: 'Colleague says:', q: '"Could you pitch in on this project?"',
+      answers: ['Throw something', 'Help with the task', 'Present an idea', 'Complain about it'], correct: 1,
+      explain: '„To pitch in" = mit anpacken, mithelfen. Nicht verwechseln mit „to pitch" (= ein Angebot/eine Idee präsentieren).' },
+
+    { topic: 'finance', difficulty: 'easy', q: 'What does ROI stand for?',
+      answers: ['Rate of Inflation', 'Return on Investment', 'Revenue of Industry', 'Record of Interest'], correct: 1,
+      explain: 'ROI = Return on Investment. Misst, wie rentabel eine Investition war. Formel: (Gewinn − Kosten) / Kosten.' },
+
+    // MEDIUM (B2+/C1)
+    { topic: 'emails', difficulty: 'medium', context: 'A client asks for something you can\'t deliver in time. You want to push back politely.', q: 'What is the best phrasing?',
+      answers: ['"No, I can\'t do that."', '"Sorry, that\'s impossible."', '"I\'d love to help, but given our current priorities, I\'m afraid I won\'t be able to commit to that timeline."', '"You should ask someone else."'], correct: 2,
+      explain: 'Professioneller Pushback folgt der Formel: Wertschätzung + Begründung + klare Grenze. Harte Absage („No", „impossible") beschädigt die Beziehung.' },
+
+    { topic: 'negotiations', difficulty: 'medium', context: 'Client says:', q: '"Your price is too high." What is the best response?',
+      answers: ['"Okay, I\'ll give you a discount."', '"I understand your concern. Could you help me understand which part of the scope is driving that perception?"', '"That\'s the price, take it or leave it."', '"Our competitors are even more expensive."'], correct: 1,
+      explain: 'Goldene Regel: Nie sofort Rabatt geben. Erst den Einwand verstehen. „What\'s driving that" = was steckt dahinter. Oft ist „zu teuer" kein Preis-, sondern ein Wertwahrnehmungs-Problem.' },
+
+    { topic: 'projects', difficulty: 'medium', q: 'What is a RACI matrix used for?',
+      answers: ['Budget calculation', 'Defining roles and responsibilities (Responsible, Accountable, Consulted, Informed)', 'Risk assessment', 'Timeline planning'], correct: 1,
+      explain: 'RACI klärt bei jedem Task: Wer macht\'s (Responsible)? Wer entscheidet (Accountable)? Wer wird gefragt (Consulted)? Wer wird informiert (Informed)? Standard-PM-Tool.' },
+
+    { topic: 'deadlines', difficulty: 'medium', context: 'Project update email:', q: '"We\'re running behind schedule." What does that mean?',
+      answers: ['We are too early', 'We are late / delayed', 'We are walking', 'We finished early'], correct: 1,
+      explain: '„Behind schedule" = hinter dem Zeitplan (= spät dran). Gegenteil: „ahead of schedule". Merkhilfe: „running behind" = jemandem/etwas hinterherlaufen.' },
+
+    { topic: 'customer', difficulty: 'medium', context: 'An angry customer is on the phone.', q: 'What is the best opening?',
+      answers: ['"Calm down."', '"That\'s not our fault."', '"I completely understand your frustration. Let me see what I can do to resolve this."', '"Please read our terms and conditions."'], correct: 2,
+      explain: 'Empathie zuerst, Lösung zweitens. Den Kunden beschuldigen oder belehren eskaliert. Formel: anerkennen → beruhigen → handeln.' },
+
+    { topic: 'presentations', difficulty: 'medium', context: 'Audience member asks a question you don\'t know the answer to.', q: 'Best response?',
+      answers: ['"I don\'t know."', '"That\'s a stupid question."', '"That\'s a great question. Let me get back to you on that with more detail."', '"Next question."'], correct: 2,
+      explain: 'Wertschätzung + ehrliches Eingeständnis + Follow-up-Zusage. Erfinden ist gefährlich, „I don\'t know" allein unprofessionell. Merken: „I\'ll get back to you".' },
+
+    { topic: 'meetings', difficulty: 'medium', context: 'During a meeting, a colleague says:', q: '"Let\'s park that for now." What does she suggest?',
+      answers: ['Take a break', 'Set that topic aside and discuss it later', 'Go to the parking lot', 'Delete the topic'], correct: 1,
+      explain: '„To park something" = ein Thema bewusst zurückstellen (nicht ignorieren!). Oft gefolgt von einem „parking lot" als sichtbare Liste zurückgestellter Themen.' },
+
+    // HARD (C1+)
+    { topic: 'finance', difficulty: 'hard', q: '"The project came in under budget." This means…',
+      answers: ['It cost less than planned', 'It was delivered late', 'It was over budget', 'It was cancelled'], correct: 0,
+      explain: '„Under budget" = weniger ausgegeben als geplant (positiv!). „Over budget" = mehr als geplant (negativ). „Within budget" = genau im Rahmen (ok).' },
+
+    { topic: 'negotiations', difficulty: 'hard', q: 'What does BATNA mean in negotiation theory?',
+      answers: ['Budget After Negotiation Target Amount', 'Best Alternative to a Negotiated Agreement', 'Business Agreement Time Negotiation Approach', 'Bargaining Approach to Negotiate Alternatives'], correct: 1,
+      explain: 'BATNA (Harvard Negotiation Project) = deine beste Alternative, falls die Verhandlung scheitert. Je stärker deine BATNA, desto besser deine Verhandlungsposition — weil du ablehnen kannst.' },
+
+    { topic: 'emails', difficulty: 'hard', q: 'Most professional closing for a formal business email to an external client?',
+      answers: ['"Cheers,"', '"xoxo"', '"Kind regards,"', '"Later!"'], correct: 2,
+      explain: '„Kind regards" / „Best regards" / „Yours sincerely" sind der formelle Standard. „Cheers" nur bei bekannten Kontakten. „Best" ist in den USA OK, in UK eher unüblich.' },
+
+    { topic: 'projects', difficulty: 'hard', context: 'Stakeholder asks:', q: '"What\'s the critical path?" What do they want to know?',
+      answers: ['The most expensive part of the project', 'The riskiest person on the team', 'The sequence of tasks that determines the project\'s total duration', 'The emergency exit plan'], correct: 2,
+      explain: 'Critical Path = die längste Aufgabenkette ohne Puffer. Verzögert sich eine davon, verzögert sich das ganze Projekt. Kernkonzept im PM (Critical Path Method).' },
+
+    { topic: 'customer', difficulty: 'hard', context: 'A customer is requesting something that\'s not included in the contract.', q: 'What is the best phrasing to decline professionally?',
+      answers: ['"No, we can\'t do that."', '"That\'s against our policy."', '"Unfortunately, that\'s outside the scope of our current agreement, but let me suggest an alternative that might work for you."', '"Please read the contract."'], correct: 2,
+      explain: 'Absage + Begründung + Alternative. Der Kunde bleibt im Gespräch, die Beziehung intakt. „Outside the scope of our current agreement" ist höflicher als „not in the contract".' },
+
+    { topic: 'office', difficulty: 'hard', context: 'In a large meeting, your manager says:', q: '"Let\'s take this offline." What does it mean?',
+      answers: ['Turn off the computer', 'Go home early', 'Discuss this privately, not in the current meeting', 'Post it online later'], correct: 2,
+      explain: '„To take something offline" = ein Thema nicht im aktuellen Kreis weiterbesprechen, sondern 1:1 oder in kleinerer Runde. Deutlich höflicher als „Das diskutieren wir nicht hier".' }
+  ],
+
+  /* -----------------------------------------------------------------
+   * ADVENTURE (Mode 3): 15 Aufgaben, 3 Akte, mixed formats
+   * ----------------------------------------------------------------- */
+  adventure: [
+    // ========== ACT I — Monday Morning (Easy) ==========
+    { act: 1, topic: 'meetings', format: 'mc', context: '9:00 AM. Your colleague Lisa writes:', q: '"Morning! Can we have a quick sync at 10?" What do you reply?',
+      answers: ['"What is sync?"', '"Sure, 10 works for me. Shall we meet in the small meeting room?"', '"I\'m busy forever."', '"Send me an email instead."'], correct: 1,
+      explain: '„Sync" = kurzes Abstimmungsmeeting. Professionelle Antwort: Zusage + konkreter Vorschlag zum Ort. Zeigt Initiative und Klarheit.' },
+
+    { act: 1, topic: 'emails', format: 'typing',  q: 'Translate: „Ich melde mich bei Ihnen." (Email-Kontext)',
+      correctAnswers: ['i\'ll get back to you', 'i will get back to you'],
+      explain: 'Die Standard-Follow-up-Phrase im Business English. Auch mit vollem „I will" akzeptiert, aber die Kontraktion klingt natürlicher.' },
+
+    { act: 1, topic: 'office', format: 'mc', context: 'You\'re running 10 minutes late for a meeting.', q: 'Best phrasing when you arrive?',
+      answers: ['"Sorry I\'m late, I overslept."', '"My apologies for the delay — I had an overrunning call."', '"Traffic was crazy this morning."', '"My alarm didn\'t work."'], correct: 1,
+      explain: 'Professionell: formelle Entschuldigung + plausibler Business-Grund. Private Gründe (Alarm, Traffic, Oversleeping) gehören nicht in den Corporate-Kontext. „Overrunning call" = ein Call, der länger dauert als geplant.' },
+
+    { act: 1, topic: 'emails', format: 'typing',  q: 'Translate: „anbei / im Anhang"',
+      correctAnswers: ['please find attached', 'attached', 'please see attached'],
+      explain: 'Standard-Formulierung. „Please find attached the report" oder einfach „Attached is the report". Variante je nach Formalitätsgrad.' },
+
+    { act: 1, topic: 'emails', format: 'mc', context: 'Your team lead sends a long email ending with:', q: '"Please advise." What should you do?',
+      answers: ['Ignore it, it\'s just a phrase', 'Provide your opinion or recommendation', 'Advise them to take vacation', 'Forward the email'], correct: 1,
+      explain: '„Please advise" = formell für „Bitte um deine Einschätzung/Empfehlung". Antworte mit konkreter Meinung oder Vorgehensvorschlag. Schweigen wird als Desinteresse gewertet.' },
+
+    // ========== ACT II — Tuesday Crunch (Medium) ==========
+    { act: 2, topic: 'deadlines', format: 'mc', context: 'Client email arrives:', q: '"We need to push back the launch by two weeks." What does that mean?',
+      answers: ['Launch earlier than planned', 'Delay the launch', 'Cancel the launch', 'Launch in a different country'], correct: 1,
+      explain: '„To push back" = nach hinten verschieben (Zeit-Metapher: etwas wird in der Zeit weiter „hinten" platziert). Gegenteil: „to pull forward" = vorziehen.' },
+
+    { act: 2, topic: 'deadlines', format: 'typing',  q: 'Translate: „eine Frist einhalten" (als Verb-Phrase)',
+      correctAnswers: ['to meet a deadline', 'meet a deadline', 'to meet the deadline', 'meet the deadline'],
+      explain: 'Wichtig: NICHT „to hold a deadline" — das ist ein klassischer Germanismus. Das richtige Verb auf Englisch ist „meet" (= erreichen, einhalten).' },
+
+    { act: 2, topic: 'negotiations', format: 'mc', context: 'Sales call. Client says:', q: '"Your price is 20% above our budget." Best strategic response?',
+      answers: ['"Okay, I\'ll lower it by 20%."', '"I appreciate your transparency. Could we look at adjusting the scope to match your budget, rather than the price?"', '"Then don\'t buy it."', '"Everyone says that."'], correct: 1,
+      explain: 'Goldregel: Preis verteidigen, Scope anpassen. Sofortige Rabatte signalisieren, dass der ursprüngliche Preis aufgeblasen war. „Rather than" = eher als.' },
+
+    { act: 2, topic: 'office', format: 'mc', context: 'Your manager writes:', q: '"Let\'s align on the deliverables before EOW." What does she want?',
+      answers: ['Cancel all tasks', 'Agree on the outputs before end of week', 'Download the files', 'Create a new team'], correct: 1,
+      explain: 'Drei Fachbegriffe in einem Satz: „to align on" = sich einigen auf, „EOW" = End of Week, „deliverables" = zu liefernde Ergebnisse. Typische Corporate-Verdichtung.' },
+
+    { act: 2, topic: 'teamwork', format: 'typing',  q: 'Translate: „auf dem Laufenden halten" (jemanden informiert halten)',
+      correctAnswers: ['to keep in the loop', 'keep in the loop', 'to keep someone in the loop', 'keep someone in the loop', 'to keep posted', 'keep posted'],
+      explain: 'Idiomatisch: „to keep someone in the loop" = jemanden eingebunden / informiert halten. Auch „to keep posted" gebräuchlich. Herkunft: „loop" = Kreis der Informierten.' },
+
+    // ========== ACT III — Friday Boardroom (Hard) ==========
+    { act: 3, topic: 'finance', format: 'mc', context: 'Board meeting. CFO asks:', q: '"What\'s the ROI on this investment?" You have the number, but it\'s weak (1.2x). What do you say?',
+      answers: ['"Sorry, the number is bad."', '"The projected ROI is 1.2x; however, this excludes strategic benefits such as market positioning, which we\'ve quantified separately on slide 14."', '"ROI doesn\'t matter here."', '"Let me get back to you."'], correct: 1,
+      explain: 'Executive-Level-Antwort: Zahl transparent nennen + Kontext geben + auf weitere Evidenz verweisen. „However" framed die schwache Zahl professionell, ohne zu verstecken.' },
+
+    { act: 3, topic: 'negotiations', format: 'mc', context: 'Negotiation deadlock. Client refuses to move.', q: 'Best diplomatic response?',
+      answers: ['"Fine, we\'re done here."', '"It seems we\'ve reached an impasse. Shall we take a short break and reconvene with fresh perspectives?"', '"You\'re being difficult."', '"I\'ll call my manager."'], correct: 1,
+      explain: 'Zwei C1-Schlüsselwörter: „impasse" = Sackgasse, Stillstand. „To reconvene" = wieder zusammenkommen. Elegantes De-Escalating ohne Gesichtsverlust für beide Seiten.' },
+
+    { act: 3, topic: 'office', format: 'typing',  q: 'Translate: „die Vorgehensweise abstimmen"',
+      correctAnswers: ['to align on the approach', 'align on the approach', 'to agree on the approach', 'agree on the approach'],
+      explain: 'Zentrales Corporate-Verb. „To align" ist stärker als „to agree" — es impliziert, dass alle Parteien denselben Richtungsvektor haben, nicht nur oberflächlich zustimmen.' },
+
+    { act: 3, topic: 'presentations', format: 'mc', context: 'Your presentation. Audience member interrupts aggressively:', q: '"Your numbers don\'t add up!" You respond:',
+      answers: ['"Yes, they do."', '"You\'re wrong."', '"Thank you for raising that — could you point me to the specific figure you\'re questioning? I\'d like to address it properly."', '"Let\'s move on."'], correct: 2,
+      explain: 'Höchstes Executive-Presence-Niveau: Angriff wertschätzend umdrehen („thank you for raising that"), konkretisieren lassen („which specific figure"), Verantwortung übernehmen („I\'d like to address it"). Nie defensive werden.' },
+
+    { act: 3, topic: 'customer', format: 'mc', context: '🔥 BOSS LEVEL — Your biggest client threatens to leave:', q: '"We\'re considering other providers." Best strategic response?',
+      answers: ['"Please don\'t leave!"', '"Our competitors are worse."', '"I\'d genuinely like to understand what\'s driving that consideration. Could we set up a call this week so I can address your concerns directly — and if we can\'t resolve them, at least ensure a clean transition?"', '"Give me a better offer and I\'ll match it."'], correct: 2,
+      explain: 'Customer-Success-Playbook: Ego raus, Neugier rein. „What\'s driving that" = Ursache verstehen. Das Anbieten einer sauberen Trennung („clean transition") zeigt Souveränität — und hält paradoxerweise oft den Kunden, weil es Vertrauen signalisiert.' }
+  ]
+};
+
+/* ============================================================================
+ * GAME LOGIC — completely separated from content
+ * ============================================================================ */
+
+const Game = (() => {
+
+  // ---------- STATE ----------
+  let state = {
+    mode: null,           // 'quiz' | 'typing' | 'adventure'
+    queue: [],
+    currentIdx: 0,
+    correctCount: 0,
+    lives: 5,             // for adventure
+    startTime: null,
+    wrongAnswers: [],     // for review
+    answered: false,
+    hintUsed: false,      // hint used on current question
+    hintsUsedTotal: 0     // total hints in session
+  };
+
+  let stats = {
+    streak: 0,
+    lastPlayDate: null,
+    totalPlayed: 0,
+    bestQuiz: null,
+    bestTyping: null,
+    bestAdventure: null
+  };
+
+  // ---------- PERSISTENT STORAGE ----------
+  async function loadStats() {
+    try {
+      if (window.storage) {
+        const r = await window.storage.get('bev-stats');
+        if (r && r.value) {
+          stats = { ...stats, ...JSON.parse(r.value) };
+          updateStreak();
+        }
+      }
+    } catch (e) { /* no saved state */ }
+    renderHomeStats();
+  }
+
+  function saveStats() {
+    try {
+      if (window.storage) window.storage.set('bev-stats', JSON.stringify(stats));
+    } catch (e) {}
+  }
+
+  function updateStreak() {
+    const today = new Date().toDateString();
+    const last = stats.lastPlayDate ? new Date(stats.lastPlayDate).toDateString() : null;
+    if (!last) return;
+    const gap = Math.floor((Date.now() - new Date(stats.lastPlayDate).getTime()) / 86400000);
+    if (gap > 1) stats.streak = 0;
+  }
+
+  // ---------- HOME ----------
+  function renderHomeStats() {
+    document.getElementById('homeStreak').textContent = stats.streak;
+    document.getElementById('homeTotal').textContent = stats.totalPlayed;
+    const bestValues = [stats.bestQuiz, stats.bestTyping, stats.bestAdventure].filter(v => v !== null);
+    const best = bestValues.length ? Math.max(...bestValues) : null;
+    document.getElementById('homeBest').textContent = best !== null ? best + '%' : '—';
+  }
+
+  // ---------- MODE ENTRY ----------
+  function startMode(mode) {
+    state.mode = mode;
+    state.currentIdx = 0;
+    state.correctCount = 0;
+    state.lives = 5;
+    state.startTime = Date.now();
+    state.wrongAnswers = [];
+    state.answered = false;
+    state.hintUsed = false;
+    state.hintsUsedTotal = 0;
+
+    if (mode === 'quiz') {
+      state.queue = shuffle([...CONTENT.quiz]).slice(0, 20);
+      // sort by difficulty to ensure gradient
+      state.queue.sort((a, b) => diffRank(a.difficulty) - diffRank(b.difficulty));
+    } else if (mode === 'typing') {
+      state.queue = shuffle([...CONTENT.vocab]).slice(0, 10);
+    } else if (mode === 'adventure') {
+      state.queue = [...CONTENT.adventure];  // already sorted by act
+    }
+
+    showScreen('gameScreen');
+    renderQuestion();
+  }
+
+  function diffRank(d) { return d === 'easy' ? 0 : d === 'medium' ? 1 : 2; }
+
+  function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  // ---------- RENDER QUESTION ----------
+  function renderQuestion() {
+    state.answered = false;
+
+    const total = state.queue.length;
+    const idx = state.currentIdx;
+
+    if (idx >= total) {
+      finish();
+      return;
+    }
+
+    const item = state.queue[idx];
+
+    // Header
+    document.getElementById('gameProgressText').textContent = `${idx + 1} / ${total}`;
+    document.getElementById('gameProgressBar').style.width = (idx / total * 100) + '%';
+
+    // Adventure-specific: lives & act banner
+    const livesBar = document.getElementById('livesBar');
+    const actContainer = document.getElementById('actBannerContainer');
+    actContainer.innerHTML = '';
+
+    if (state.mode === 'adventure') {
+      livesBar.style.display = 'flex';
+      renderLives();
+
+      // Act banner on act change
+      const prevItem = idx > 0 ? state.queue[idx - 1] : null;
+      if (!prevItem || prevItem.act !== item.act) {
+        const actNames = { 1: '🌅  ACT I — MONDAY MORNING', 2: '⚡  ACT II — TUESDAY CRUNCH', 3: '🔥  ACT III — FRIDAY BOARDROOM' };
+        const banner = document.createElement('div');
+        banner.className = 'act-banner';
+        banner.textContent = actNames[item.act] || '';
+        actContainer.appendChild(banner);
+      }
+    } else {
+      livesBar.style.display = 'none';
+    }
+
+    // Topic & difficulty
+    const topicLabels = {
+      meetings: '📅 MEETINGS', emails: '📧 EMAILS', deadlines: '⏰ DEADLINES',
+      presentations: '🎤 PRESENTATIONS', negotiations: '🤝 NEGOTIATIONS',
+      projects: '📊 PROJECT MGMT', finance: '💰 FINANCE', customer: '💬 CUSTOMER',
+      teamwork: '👥 TEAMWORK', office: '🏢 OFFICE'
+    };
+    document.getElementById('questionTopic').textContent = topicLabels[item.topic] || item.topic.toUpperCase();
+
+    const badge = document.getElementById('difficultyBadge');
+    let diff = item.difficulty || (state.mode === 'adventure' ? (item.act === 1 ? 'easy' : item.act === 2 ? 'medium' : 'hard') : 'easy');
+    badge.textContent = diff.toUpperCase();
+    badge.className = 'difficulty-badge ' + diff;
+
+    // Context (optional)
+    const ctx = document.getElementById('questionContext');
+    if (item.context) {
+      ctx.style.display = 'block';
+      ctx.textContent = item.context;
+    } else {
+      ctx.style.display = 'none';
+    }
+
+    // Question text — depends on mode and format
+    const questionTextEl = document.getElementById('questionText');
+    const isTyping = state.mode === 'typing' || item.format === 'typing';
+
+    if (state.mode === 'typing') {
+      // Pure vocab test: show German term prominently
+      questionTextEl.innerHTML = `
+        <div style="font-family:'Silkscreen',monospace;font-size:10px;color:var(--red-dark);letter-spacing:1px;margin-bottom:10px;">
+          🇩🇪 ÜBERSETZE AUF ENGLISCH:
+        </div>
+        <div style="font-size:26px;color:var(--wood-deep);font-weight:bold;line-height:1.3;padding:10px;background:rgba(255,217,61,0.25);border:2px dashed var(--gold-dark);">
+          ${item.de}
+        </div>
+      `;
+    } else if (isTyping && item.q) {
+      // Adventure typing: show the translation prompt clearly
+      questionTextEl.innerHTML = `
+        <div style="font-family:'Silkscreen',monospace;font-size:10px;color:var(--red-dark);letter-spacing:1px;margin-bottom:10px;">
+          ⌨️ EINGABE-AUFGABE
+        </div>
+        <div style="font-size:19px;color:var(--wood-deep);font-weight:bold;line-height:1.3;">
+          ${item.q}
+        </div>
+      `;
+    } else {
+      // Multiple choice: plain question text
+      questionTextEl.textContent = item.q;
+    }
+
+    // Clear feedback
+    document.getElementById('feedbackArea').innerHTML = '';
+
+    // Render input depending on format (isTyping already defined above)
+    // Reset hint state for new question
+    state.hintUsed = false;
+    document.getElementById('hintReveal').innerHTML = '';
+    const hintBtn = document.getElementById('hintBtn');
+    hintBtn.disabled = false;
+    hintBtn.innerHTML = '<span>💡 HINWEIS ANZEIGEN</span><span class="cost-tag">−5 XP</span>';
+
+    if (isTyping) {
+      document.getElementById('answerGrid').style.display = 'none';
+      document.getElementById('typingWrap').style.display = 'block';
+      document.getElementById('submitBtn').style.display = 'block';
+      document.getElementById('hintSection').style.display = 'block';
+      const input = document.getElementById('typingInput');
+      input.value = '';
+      input.disabled = false;
+      setTimeout(() => input.focus(), 100);
+      input.onkeydown = (e) => {
+        if (e.key === 'Enter' && !state.answered) submitTyping();
+      };
+    } else {
+      // Multiple choice
+      document.getElementById('answerGrid').style.display = 'flex';
+      document.getElementById('typingWrap').style.display = 'none';
+      document.getElementById('submitBtn').style.display = 'none';
+      document.getElementById('hintSection').style.display = 'none';
+
+      const grid = document.getElementById('answerGrid');
+      grid.innerHTML = '';
+      item.answers.forEach((ans, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'answer-btn';
+        btn.textContent = ans;
+        btn.onclick = () => submitMC(i);
+        grid.appendChild(btn);
+      });
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function renderLives() {
+    const bar = document.getElementById('livesBar');
+    bar.innerHTML = '';
+    // 5 hearts, each = 1 life, show half-hearts too
+    for (let i = 0; i < 5; i++) {
+      const h = document.createElement('span');
+      h.className = 'life-heart';
+      const remaining = state.lives - i;
+      if (remaining >= 1) {
+        h.textContent = '❤️';
+      } else if (remaining >= 0.5) {
+        h.textContent = '💔';
+        h.classList.add('half');
+      } else {
+        h.textContent = '🖤';
+        h.classList.add('lost');
+      }
+      bar.appendChild(h);
+    }
+  }
+
+  // ---------- HINT SYSTEM ----------
+  function showHint() {
+    if (state.hintUsed || state.answered) return;
+
+    const item = state.queue[state.currentIdx];
+    const correctAnswers = state.mode === 'typing' ? item.en : item.correctAnswers;
+    const primary = Array.isArray(correctAnswers) ? correctAnswers[0] : correctAnswers;
+
+    // Build tiered hint
+    const words = primary.trim().split(/\s+/);
+    const wordCount = words.length;
+    const firstLetter = primary.charAt(0).toUpperCase();
+    const pattern = words.map(w => {
+      if (w.length <= 2) return w.replace(/./g, '_');
+      return w.charAt(0) + w.slice(1).replace(/[a-zA-Z']/g, '_');
+    }).join(' ');
+
+    const hintReveal = document.getElementById('hintReveal');
+    hintReveal.innerHTML = `
+      <div class="hint-reveal">
+        <b>💡 HINWEIS</b>
+        <div class="hint-item">
+          <span class="icon">📏</span>
+          <span><b style="display:inline;font-family:inherit;font-size:inherit;color:var(--wood-deep);">${wordCount}</b> ${wordCount === 1 ? 'Wort' : 'Wörter'} insgesamt</span>
+        </div>
+        <div class="hint-item">
+          <span class="icon">🔤</span>
+          <span>Beginnt mit: <b style="display:inline;font-family:'Press Start 2P',monospace;font-size:14px;color:var(--red-dark);">${firstLetter}</b></span>
+        </div>
+        <div class="hint-item">
+          <span class="icon">✏️</span>
+          <span style="font-family:'Silkscreen',monospace;font-size:13px;letter-spacing:2px;color:var(--wood-deep);">${pattern}</span>
+        </div>
+      </div>
+    `;
+
+    state.hintUsed = true;
+    state.hintsUsedTotal++;
+
+    const hintBtn = document.getElementById('hintBtn');
+    hintBtn.disabled = true;
+    hintBtn.innerHTML = '<span>✓ HINWEIS GENUTZT</span>';
+
+    // Refocus input
+    document.getElementById('typingInput').focus();
+  }
+
+
+  function submitMC(chosenIdx) {
+    if (state.answered) return;
+    state.answered = true;
+
+    const item = state.queue[state.currentIdx];
+    const isCorrect = chosenIdx === item.correct;
+
+    document.querySelectorAll('#answerGrid .answer-btn').forEach((btn, i) => {
+      btn.disabled = true;
+      if (i === item.correct) btn.classList.add('correct');
+      else if (i === chosenIdx && !isCorrect) btn.classList.add('wrong');
+    });
+
+    handleResult(isCorrect, item.answers[item.correct], item);
+  }
+
+  // ---------- SUBMIT TYPING ----------
+  function submitTyping() {
+    if (state.answered) return;
+
+    const item = state.queue[state.currentIdx];
+    const input = document.getElementById('typingInput');
+    const userAnswer = input.value.trim();
+
+    if (!userAnswer) {
+      input.focus();
+      return;
+    }
+
+    state.answered = true;
+    input.disabled = true;
+
+    // Determine correct answers based on mode
+    const correctAnswers = state.mode === 'typing' ? item.en : item.correctAnswers;
+    const match = matchTyping(userAnswer, correctAnswers);
+
+    // Show the primary correct answer (first in list)
+    const primaryAnswer = Array.isArray(correctAnswers) ? correctAnswers[0] : correctAnswers;
+
+    handleResult(match.correct, primaryAnswer, item, match);
+  }
+
+  // Levenshtein distance for typo tolerance
+  function levenshtein(a, b) {
+    if (a === b) return 0;
+    const m = a.length, n = b.length;
+    if (m === 0) return n;
+    if (n === 0) return m;
+    const dp = Array.from({ length: m + 1 }, () => new Array(n + 1));
+    for (let i = 0; i <= m; i++) dp[i][0] = i;
+    for (let j = 0; j <= n; j++) dp[0][j] = j;
+    for (let i = 1; i <= m; i++) {
+      for (let j = 1; j <= n; j++) {
+        const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+        dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+      }
+    }
+    return dp[m][n];
+  }
+
+  function normalize(s) {
+    return s.toLowerCase().trim()
+      .replace(/[.,!?;:]/g, '')
+      .replace(/\s+/g, ' ')
+      .replace(/’/g, '\'');
+  }
+
+  function matchTyping(user, correctList) {
+    const userNorm = normalize(user);
+    const list = Array.isArray(correctList) ? correctList : [correctList];
+
+    for (const correct of list) {
+      const correctNorm = normalize(correct);
+      if (userNorm === correctNorm) {
+        return { correct: true, exact: true };
+      }
+      // Tolerance: ≤ 2 typos for words ≥ 5 chars, ≤ 1 for shorter
+      const dist = levenshtein(userNorm, correctNorm);
+      const maxDist = correctNorm.length >= 8 ? 2 : 1;
+      if (dist <= maxDist && dist > 0) {
+        return { correct: true, exact: false, typo: true, distance: dist };
+      }
+    }
+    return { correct: false };
+  }
+
+  // ---------- RESULT HANDLING ----------
+  function handleResult(isCorrect, correctAnswer, item, matchInfo) {
+    const fb = document.getElementById('feedbackArea');
+
+    if (isCorrect) {
+      state.correctCount++;
+      const partial = matchInfo && matchInfo.typo;
+      const usedHint = state.hintUsed;
+      let title;
+      let cls;
+
+      if (usedHint) {
+        title = '✓ RICHTIG (mit Hinweis)';
+        cls = 'partial';
+      } else if (partial) {
+        title = '✓ FAST PERFEKT';
+        cls = 'partial';
+      } else {
+        title = '✅ RICHTIG!';
+        cls = 'correct';
+      }
+
+      let html = `<div class="feedback ${cls}">
+        <div class="feedback-title">${title}</div>`;
+
+      if (partial) {
+        html += `<div class="feedback-answer">Korrekt: „${correctAnswer}"<br><span style="font-size:14px;color:var(--wood-mid);">(kleiner Tippfehler — akzeptiert)</span></div>`;
+      } else {
+        html += `<div class="feedback-answer">„${correctAnswer}"</div>`;
+      }
+
+      if (item.example) {
+        html += `<div class="feedback-example">💬 ${item.example}</div>`;
+      }
+
+      html += `<div class="feedback-explain"><b>💡 LERNHINWEIS</b>${item.explain || item.note || ''}</div>
+        <button class="next-btn" onclick="Game.next()">▶ WEITER</button>
+      </div>`;
+
+      fb.innerHTML = html;
+    } else {
+      // Wrong — adventure: lose half life
+      state.wrongAnswers.push({
+        q: item.q,
+        correct: correctAnswer,
+        explain: item.explain || item.note || ''
+      });
+
+      if (state.mode === 'adventure') {
+        state.lives = Math.max(0, state.lives - 0.5);
+        renderLives();
+        // Heart break animation
+        const hearts = document.querySelectorAll('.life-heart');
+        if (hearts[Math.floor(state.lives)]) {
+          hearts[Math.floor(state.lives)].classList.add('breaking');
+        }
+      }
+
+      let html = `<div class="feedback wrong">
+        <div class="feedback-title">❌ LEIDER FALSCH</div>
+        <div class="feedback-answer">Korrekt: „${correctAnswer}"</div>`;
+
+      if (item.example) {
+        html += `<div class="feedback-example">💬 ${item.example}</div>`;
+      }
+
+      html += `<div class="feedback-explain"><b>💡 WARUM</b>${item.explain || item.note || ''}</div>`;
+
+      if (state.mode === 'adventure') {
+        html += `<div class="feedback-explain" style="background:rgba(201,77,77,0.2);"><b>⚠ LEBEN</b>−0.5 Leben • Noch ${state.lives} ❤ übrig</div>`;
+
+        if (state.lives <= 0) {
+          html += `<button class="next-btn" onclick="Game.gameOver()" style="background:linear-gradient(180deg,#ff6b6b,#8b2d2d);color:white;text-shadow:1px 1px 0 #000;">💀 GAME OVER</button>`;
+        } else {
+          html += `<button class="next-btn" onclick="Game.next()">▶ WEITER</button>`;
+        }
+      } else {
+        html += `<button class="next-btn" onclick="Game.next()">▶ WEITER</button>`;
+      }
+
+      html += `</div>`;
+      fb.innerHTML = html;
+    }
+
+    // Scroll feedback into view
+    setTimeout(() => {
+      fb.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+  }
+
+  function next() {
+    state.currentIdx++;
+    renderQuestion();
+  }
+
+  // ---------- FINISH ----------
+  function finish() {
+    const total = state.queue.length;
+    const correct = state.correctCount;
+    const pct = Math.round(correct / total * 100);
+    const duration = Math.round((Date.now() - state.startTime) / 60000);
+
+    // Update stats
+    const today = new Date().toDateString();
+    const lastDate = stats.lastPlayDate ? new Date(stats.lastPlayDate).toDateString() : null;
+    if (lastDate !== today) {
+      if (lastDate) {
+        const gap = Math.floor((Date.now() - new Date(stats.lastPlayDate).getTime()) / 86400000);
+        if (gap === 1) stats.streak++;
+        else if (gap > 1) stats.streak = 1;
+      } else {
+        stats.streak = 1;
+      }
+    }
+    stats.lastPlayDate = Date.now();
+    stats.totalPlayed++;
+
+    const key = 'best' + state.mode.charAt(0).toUpperCase() + state.mode.slice(1);
+    if (stats[key] === null || pct > stats[key]) stats[key] = pct;
+    saveStats();
+
+    // Render results
+    let emoji, title;
+    if (pct === 100) { emoji = '🏆'; title = 'PERFEKT!'; }
+    else if (pct >= 80) { emoji = '🎉'; title = 'STARKE<br>LEISTUNG!'; }
+    else if (pct >= 60) { emoji = '👍'; title = 'SOLIDE<br>SESSION'; }
+    else if (pct >= 40) { emoji = '📚'; title = 'WEITER<br>LERNEN!'; }
+    else { emoji = '💪'; title = 'ÜBUNG MACHT<br>DEN MEISTER'; }
+
+    document.getElementById('resultEmoji').textContent = emoji;
+    document.getElementById('resultTitle').innerHTML = title;
+    document.getElementById('resultScore').textContent = `${correct} / ${total}`;
+
+    const statsHtml = `
+      <div class="result-row"><span class="result-label">MODUS</span><span class="result-value">${state.mode.toUpperCase()}</span></div>
+      <div class="result-row"><span class="result-label">RICHTIG</span><span class="result-value">${correct} / ${total} (${pct}%)</span></div>
+      <div class="result-row"><span class="result-label">DAUER</span><span class="result-value">${duration} min</span></div>
+      ${state.hintsUsedTotal > 0 ? `<div class="result-row"><span class="result-label">HINWEISE</span><span class="result-value">💡 ${state.hintsUsedTotal}x genutzt</span></div>` : ''}
+      <div class="result-row"><span class="result-label">STREAK</span><span class="result-value">🔥 ${stats.streak} Tage</span></div>
+      ${stats[key] === pct && pct > 0 ? '<div class="result-row"><span class="result-label">NEUE BESTZEIT</span><span class="result-value">🌟 ' + pct + '%</span></div>' : ''}
+    `;
+    document.getElementById('resultStats').innerHTML = statsHtml;
+
+    renderReview('reviewWrap', 'reviewList');
+
+    showScreen('resultsScreen');
+  }
+
+  function gameOver() {
+    const total = state.currentIdx;
+    const correct = state.correctCount;
+    const pct = total > 0 ? Math.round(correct / total * 100) : 0;
+
+    stats.totalPlayed++;
+    saveStats();
+
+    const statsHtml = `
+      <div class="result-row"><span class="result-label">REACHED</span><span class="result-value">Task ${total} / 15</span></div>
+      <div class="result-row"><span class="result-label">CORRECT</span><span class="result-value">${correct} / ${total} (${pct}%)</span></div>
+      <div class="result-row"><span class="result-label">ACT</span><span class="result-value">${state.queue[state.currentIdx - 1]?.act || '?'}</span></div>
+    `;
+    document.getElementById('gameoverStats').innerHTML = statsHtml;
+
+    renderReview('gameoverReview', 'gameoverReviewList');
+
+    showScreen('gameoverScreen');
+  }
+
+  function renderReview(wrapId, listId) {
+    const wrap = document.getElementById(wrapId);
+    const list = document.getElementById(listId);
+
+    if (state.wrongAnswers.length === 0) {
+      wrap.style.display = 'none';
+      return;
+    }
+
+    wrap.style.display = 'block';
+    list.innerHTML = state.wrongAnswers.slice(0, 5).map(w => `
+      <div class="review-item">
+        <div class="q">❓ ${escapeHtml(w.q)}</div>
+        <div class="a">✓ ${escapeHtml(w.correct)}</div>
+        <div style="color:var(--wood-mid);margin-top:3px;font-size:13px;">${escapeHtml(w.explain)}</div>
+      </div>
+    `).join('');
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', '\'': '&#039;' }[c]));
+  }
+
+  // ---------- NAV ----------
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function goHome() {
+    renderHomeStats();
+    showScreen('homeScreen');
+  }
+
+  function retry() {
+    startMode(state.mode);
+  }
+
+  function confirmExit() {
+    // Show in-app modal instead of native confirm (more reliable on mobile)
+    const modal = document.getElementById('exitModal');
+    modal.classList.add('active');
+  }
+
+  function doExit() {
+    document.getElementById('exitModal').classList.remove('active');
+    goHome();
+  }
+
+  function cancelExit() {
+    document.getElementById('exitModal').classList.remove('active');
+  }
+
+  // ---------- INIT ----------
+  loadStats();
+
+  return {
+    startMode,
+    submitTyping,
+    next,
+    gameOver,
+    retry,
+    goHome,
+    confirmExit,
+    doExit,
+    cancelExit,
+    showHint
+  };
+})();
+</script>
+
+</body>
+</html>
